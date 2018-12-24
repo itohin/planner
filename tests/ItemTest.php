@@ -21,4 +21,14 @@ class ItemTest extends TestCase
 
         $this->assertTrue($item->isDueToRun(Carbon::now()));
     }
+
+    /** @test */
+    public function it_must_not_be_run()
+    {
+        $item = $this->getMockForAbstractClass(Item::class);
+
+        $item->timer = '0 0 * * *';
+
+        $this->assertFalse($item->isDueToRun(Carbon::now()));
+    }
 }

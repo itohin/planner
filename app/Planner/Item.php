@@ -13,6 +13,6 @@ abstract class Item
 
     public function isDueToRun(Carbon $interval)
     {
-        CronExpression::factory($this->timer)->isDue($interval);
+        return CronExpression::factory($this->timer)->isDue($interval);
     }
 }
