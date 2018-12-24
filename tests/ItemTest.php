@@ -1,12 +1,15 @@
 <?php
 
+use App\Planner\Item;
 use PHPUnit\Framework\TestCase;
 
 class ItemTest extends TestCase
 {
     /** @test */
-    function exampleTest()
+    public function it_has_default_cron_timer()
     {
-        $this->assertTrue(true);
+        $item = $this->getMockForAbstractClass(Item::class);
+
+        $this->assertEquals($item->timer, '* * * * *');
     }
 }
