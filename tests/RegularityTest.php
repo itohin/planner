@@ -15,6 +15,15 @@ class RegularityTest extends TestCase
     }
 
     /** @test */
+    public function it_can_change_timer()
+    {
+        $regularity = $this->regularity();
+        $regularity->changeTimer(1, 1);
+
+        $this->assertEquals($regularity->timer, '1 * * * *');
+    }
+
+    /** @test */
     public function it_can_set_every_minute()
     {
         $regularity = $this->regularity();
