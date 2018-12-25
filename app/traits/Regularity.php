@@ -8,4 +8,19 @@ trait Regularity
     {
         $this->timer = $timer;
     }
+
+    public function everyMinute()
+    {
+        $this->timer = '* * * * *';
+    }
+
+    public function everyTenMinutes()
+    {
+        $this->timer = '*/10 * * * *';
+    }
+
+    public function everyThirtyMinutes()
+    {
+        $this->timer = '*/30 * * * *';
+    }
 }
