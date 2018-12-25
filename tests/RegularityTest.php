@@ -104,6 +104,69 @@ class RegularityTest extends TestCase
         $this->assertEquals($regularity->timer, '* * * * 1,3,5');
     }
 
+    /** @test */
+    public function it_can_set_mondays()
+    {
+        $regularity = $this->regularity();
+        $regularity->mondays();
+
+        $this->assertEquals($regularity->timer, '* * * * 1');
+    }
+
+    /** @test */
+    public function it_can_set_tuesdays()
+    {
+        $regularity = $this->regularity();
+        $regularity->tuesdays();
+
+        $this->assertEquals($regularity->timer, '* * * * 2');
+    }
+
+    /** @test */
+    public function it_can_set_wednesdays()
+    {
+        $regularity = $this->regularity();
+        $regularity->wednesdays();
+
+        $this->assertEquals($regularity->timer, '* * * * 3');
+    }
+
+    /** @test */
+    public function it_can_set_thursdays()
+    {
+        $regularity = $this->regularity();
+        $regularity->thursdays();
+
+        $this->assertEquals($regularity->timer, '* * * * 4');
+    }
+
+    /** @test */
+    public function it_can_set_fridays()
+    {
+        $regularity = $this->regularity();
+        $regularity->fridays();
+
+        $this->assertEquals($regularity->timer, '* * * * 5');
+    }
+
+    /** @test */
+    public function it_can_set_saturdays()
+    {
+        $regularity = $this->regularity();
+        $regularity->saturdays();
+
+        $this->assertEquals($regularity->timer, '* * * * 6');
+    }
+
+    /** @test */
+    public function it_can_set_sundays()
+    {
+        $regularity = $this->regularity();
+        $regularity->sundays();
+
+        $this->assertEquals($regularity->timer, '* * * * 7');
+    }
+
     public function regularity()
     {
         $regularity = $this->getMockForTrait(Regularity::class);

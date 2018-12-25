@@ -63,4 +63,39 @@ trait Regularity
     {
         return $this->changeTimer(5, implode(',', func_get_args() ?: ['*']));
     }
+
+    public function mondays()
+    {
+        return $this->days(1);
+    }
+
+    public function tuesdays()
+    {
+        return $this->days(2);
+    }
+
+    public function wednesdays()
+    {
+        return $this->days(3);
+    }
+
+    public function thursdays()
+    {
+        return $this->days(4);
+    }
+
+    public function fridays()
+    {
+        return $this->days(5);
+    }
+
+    public function saturdays()
+    {
+        return $this->days(6);
+    }
+
+    public function sundays()
+    {
+        return $this->days(7);
+    }
 }
