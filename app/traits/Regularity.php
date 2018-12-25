@@ -13,9 +13,13 @@ trait Regularity
 
     public function changeTimer($place, $value)
     {
+        $value = (array) $value;
+
         $timer = explode(' ', $this->timer);
 
         array_splice($timer, $place - 1, 1, $value);
+
+        $timer = array_slice($timer, 0, 5);
 
         return $this->setTimer(implode(' ', $timer));
     }
