@@ -58,4 +58,9 @@ trait Regularity
     {
         return $this->dailyAt(0, 0);
     }
+
+    public function days()
+    {
+        return $this->changeTimer(5, implode(',', func_get_args() ?: ['*']));
+    }
 }

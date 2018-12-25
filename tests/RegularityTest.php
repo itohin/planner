@@ -95,6 +95,15 @@ class RegularityTest extends TestCase
         $this->assertEquals($regularity->timer, '0 0 * * *');
     }
 
+    /** @test */
+    public function it_can_set_days()
+    {
+        $regularity = $this->regularity();
+        $regularity->days(1, 3, 5);
+
+        $this->assertEquals($regularity->timer, '* * * * 1,3,5');
+    }
+
     public function regularity()
     {
         $regularity = $this->getMockForTrait(Regularity::class);
