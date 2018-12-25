@@ -167,6 +167,33 @@ class RegularityTest extends TestCase
         $this->assertEquals($regularity->timer, '* * * * 7');
     }
 
+    /** @test */
+    public function it_can_set_day_and_time()
+    {
+        $regularity = $this->regularity();
+        $regularity->dailyAt(12, 30)->mondays();
+
+        $this->assertEquals($regularity->timer, '30 12 * * 1');
+    }
+
+    /** @test */
+    public function it_can_set_monthly()
+    {
+        $regularity = $this->regularity();
+        $regularity->monthly();
+
+        $this->assertEquals($regularity->timer, '0 0 1 * *');
+    }
+
+    /** @test */
+    public function it_can_set_month_and_day()
+    {
+        $regularity = $this->regularity();
+        $regularity->monthlyOn(10);
+
+        $this->assertEquals($regularity->timer, '0 0 10 * *');
+    }
+
     public function regularity()
     {
         $regularity = $this->getMockForTrait(Regularity::class);

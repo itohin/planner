@@ -98,4 +98,14 @@ trait Regularity
     {
         return $this->days(7);
     }
+
+    public function monthly()
+    {
+        return $this->changeTimer(1, [0, 0, 1]);
+    }
+
+    public function monthlyOn($day)
+    {
+        return $this->changeTimer(1, [0, 0, $day]);
+    }
 }
