@@ -59,6 +59,42 @@ class RegularityTest extends TestCase
         $this->assertEquals($regularity->timer, '*/30 * * * *');
     }
 
+    /** @test */
+    public function it_can_set_hourly_at()
+    {
+        $regularity = $this->regularity();
+        $regularity->hourlyAt(45);
+
+        $this->assertEquals($regularity->timer, '45 * * * *');
+    }
+
+    /** @test */
+    public function it_can_set_hourly()
+    {
+        $regularity = $this->regularity();
+        $regularity->hourly();
+
+        $this->assertEquals($regularity->timer, '1 * * * *');
+    }
+
+    /** @test */
+    public function it_can_set_daily_at()
+    {
+        $regularity = $this->regularity();
+        $regularity->dailyAt(12, 30);
+
+        $this->assertEquals($regularity->timer, '30 12 * * *');
+    }
+
+    /** @test */
+    public function it_can_set_daily()
+    {
+        $regularity = $this->regularity();
+        $regularity->daily();
+
+        $this->assertEquals($regularity->timer, '0 0 * * *');
+    }
+
     public function regularity()
     {
         $regularity = $this->getMockForTrait(Regularity::class);

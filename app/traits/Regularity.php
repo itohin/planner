@@ -26,22 +26,36 @@ trait Regularity
 
     public function everyMinute()
     {
-        $this->timer = '* * * * *';
-
-        return $this;
+        return $this->setTimer($this->timer);
     }
 
     public function everyTenMinutes()
     {
-        $this->timer = '*/10 * * * *';
-
-        return $this;
+        return $this->changeTimer(1, '*/10');
     }
 
     public function everyThirtyMinutes()
     {
-        $this->timer = '*/30 * * * *';
+        return $this->changeTimer(1, '*/30');
+    }
 
-        return $this;
+    public function hourlyAt($minute = 0)
+    {
+        return $this->changeTimer(1, $minute);
+    }
+
+    public function hourly()
+    {
+        return $this->hourlyAt(1);
+    }
+
+    public function dailyAt($hour = 0, $minute = 0)
+    {
+        return $this->changeTimer(1, [$minute, $hour]);
+    }
+
+    public function daily()
+    {
+        return $this->dailyAt(0, 0);
     }
 }
