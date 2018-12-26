@@ -17,7 +17,7 @@ trait Regularity
 
         $timer = explode(' ', $this->timer);
 
-        array_splice($timer, $place - 1, 1, $value);
+        array_splice($timer, $place - 1, count($value), $value);
 
         $timer = array_slice($timer, 0, 5);
 

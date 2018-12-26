@@ -51,6 +51,16 @@ class RegularityTest extends TestCase
     }
 
     /** @test */
+    public function it_change_timer_correctly()
+    {
+        $regularity = $this->regularity();
+        $regularity->daily()->daily();
+
+        $this->assertEquals($regularity->timer, '0 0 * * *');
+    }
+
+
+    /** @test */
     public function it_can_set_every_thirty_minutes()
     {
         $regularity = $this->regularity();

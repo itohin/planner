@@ -70,6 +70,18 @@ class CoreTest extends TestCase
     }
 
     /** @test */
+    public function items_returns_item_after_adding()
+    {
+        $item = $this->getMockForAbstractClass(Item::class);
+
+        $core = new Core();
+        $result = $core->add($item);
+
+        $this->assertInstanceOf(Item::class, $result);
+
+    }
+
+    /** @test */
     public function it_cant_start_unexpected_item()
     {
         $item = $this->getMockForAbstractClass(Item::class);
