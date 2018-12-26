@@ -8,6 +8,6 @@ class ExampleItem extends Item
 {
     public function manage()
     {
-        var_dump('here');
+        var_dump($this->timer);
     }
 }

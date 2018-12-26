@@ -55,4 +55,33 @@ class CoreTest extends TestCase
         $this->assertInstanceOf(Carbon::class, $core->getDate());
 
     }
+
+    /** @test */
+    public function it_can_start_item()
+    {
+        $item = $this->getMockForAbstractClass(Item::class);
+        $item->expects($this->once())->method('manage');
+
+        $core = new Core();
+        $core->add($item);
+
+        $core->start();
+
+    }
+
+    /** @test */
+    public function it_cant_start_unexpected_item()
+    {
+        $item = $this->getMockForAbstractClass(Item::class);
+        $item->monthly();
+
+        $item->expects($this->never())->method('manage');
+
+        $core = new Core();
+        $core->setDate(Carbon::create(2019, 2, 22, 0, 0, 0));
+        $core->add($item);
+
+        $core->start();
+
+    }
 }

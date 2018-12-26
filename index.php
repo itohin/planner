@@ -2,8 +2,11 @@
 
 require_once 'vendor/autoload.php';
 
-$item = new \App\Items\ExampleItem();
+use App\Core;
+use App\Items\ExampleItem;
 
-$item->setTimer('new timer');
+$core = new Core;
 
-var_dump($item->timer);
+$core->add(new ExampleItem())->everyMinute();
+
+$core->start();

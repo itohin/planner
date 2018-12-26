@@ -16,9 +16,22 @@ class Core
         return $this->items;
     }
 
+    public function start()
+    {
+        foreach ($this->getItems() as $item){
+            if(!$item->isDueToRun($this->getDate())){
+                continue;
+            }
+
+            $item->manage();
+        }
+    }
+
     public function add(Item $item)
     {
         $this->items[] = $item;
+
+        return $item;
     }
 
     public function setDate(Carbon $date)
